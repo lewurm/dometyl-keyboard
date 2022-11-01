@@ -51,7 +51,8 @@ let body_lookups =
   let offset = function
     | 2 -> -2.33, 4.6, -3. (* middle *)
     | 3 -> -1.66, -4.5, 0. (* ring *)
-    | i when i >= 4 -> -3.5, -19., 6.5 (* pinky *)
+    | 4 -> -3.5, -19.0, 6.5 (* pinky_home *)
+    | 5 -> -3.5, -24.5, 6.5 (* pinky2 *)
     | 0 -> -0.85, -3.5, 13. (* inside *)
     | _ -> -1.66, -2., 5.
   (* index *)
@@ -65,10 +66,10 @@ let body_lookups =
   and swing = function
     | 2 -> Float.pi /. -48.
     | 3 -> Float.pi /. -23.
-    | 4 -> Float.pi /. -20.0
+    | i when i >= 4-> Float.pi /. -20.0
     | _ -> 0.
   and splay = function
-    | 4 -> -0.23
+    | i when i >= 4 -> -0.23
     | 3 -> -0.1
     | _ -> 0.
   and rows _ = 3 in
@@ -99,7 +100,7 @@ let build ?hotswap () =
   let keyhole = Choc.make_hole ?hotswap ~outer_h:18. ~thickness:2.8 () in
   let plate_builder =
     Plate.make
-      ~n_body_cols:5
+      ~n_body_cols:6
       ~spacing:1.5
       ~tent:(Float.pi /. 12.)
       ~body_lookups
