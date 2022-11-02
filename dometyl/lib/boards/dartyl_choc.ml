@@ -82,7 +82,7 @@ let thumb_lookups =
         ~fan:{ angle = Float.pi /. 10.2; radius = 75.; tilt = Float.pi /. 48. }
         ~well:{ angle = Float.pi /. 7.5; radius = 59.; tilt = 0. }
         ())
-  and rows _ = 2 in
+  and rows _ = 3 in
   Plate.Lookups.thumb ~curve ~rows ()
 
 let plate_welder = Plate.skeleton_bridges
